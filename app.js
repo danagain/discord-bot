@@ -10,7 +10,6 @@ client.commands = new Discord.Collection();
 const cooldowns = new Discord.Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
-
 for (const file of commandFiles) {
 	const command = require(`./commands/${file}`);
 
@@ -21,8 +20,6 @@ for (const file of commandFiles) {
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`)
-  let channels = guild.getChannels();
-  console.log(channels);
 });
 
 client.on('message', message => {
@@ -73,3 +70,5 @@ client.on('message', message => {
 });
 
 client.login(token)
+
+module.exports.dispatcher = 'testing';
