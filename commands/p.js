@@ -3,14 +3,12 @@ const d = require('../functions/dispatcher');
 
 module.exports = {
 	name: 'p',
-    description: 'Play a YouTube Song!',
-    cooldown: 5,
-    args: true,
-    usage: '<song>',
+  description: 'Play a YouTube Song!',
+  cooldown: 5,
+  args: true,
+  usage: '<song>',
 	execute(message, args) {
-        const dispatcher = null;
         if (message.member.voiceChannel) {
-            console.log(args);
             message.member.voiceChannel.join()
               .then(connection => { // Connection is an instance of VoiceConnection
                 const streamOptions = { seek: 0, volume: 1 };
