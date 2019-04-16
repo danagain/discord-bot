@@ -1,5 +1,4 @@
 const d = require('../functions/dispatcher');
-
 module.exports = {
 	name: 'pa',
     description: 'Pause any current audio',
