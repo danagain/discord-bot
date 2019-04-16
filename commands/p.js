@@ -21,11 +21,6 @@ module.exports = {
                     }catch(error) {
                       console.log(error);
                     }
-                    d.dispatcher.on("end", end => {
-                        console.log("left channel");
-                        d.dispatcher = null;
-                        voiceChannel.leave();
-                    });
               })
               .catch(console.log('error'));
           } else {

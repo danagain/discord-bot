@@ -41,7 +41,6 @@ dispatcher = {
 
     endDispatcher(message) {
         this.dispatcher.end();
-        this.dispatcher = null;
     },
 
 }
