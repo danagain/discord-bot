@@ -1,3 +1,5 @@
+const d = require('../functions/dispatcher');
+
 module.exports = {
 	name: 'axe',
     description: 'Good day sir',
@@ -6,11 +8,11 @@ module.exports = {
         if (message.member.voiceChannel) {
             message.member.voiceChannel.join()
               .then(connection => { // Connection is an instance of VoiceConnection
-                console.log('looking in the directory : ' + __dirname +'/../audio/axe.mp3');
-                const dispatcher = connection.playFile(__dirname +'/../audio/axe.mp3');
-                dispatcher.on('end', () => {
-                    message.member.voiceChannel.leave();
-                  });
+                d.startMP3Dispatcher(message, connection, __dirname +'/../audio/axe.mp3');
+                d.dispatcher.on("end", end => {
+                  message.member.voiceChannel.leave();
+                  d.dispatcher = null;
+              });
               })
               .catch(console.log);
           } else {

@@ -1,16 +1,18 @@
+const d = require('../functions/dispatcher');
+
 module.exports = {
 	name: 'scream',
-    description: 'The vargas classic',
-    cooldown: 5,
+  description: 'The vargas classic',
+  cooldown: 5,
 	execute(message, args) {
         if (message.member.voiceChannel) {
             message.member.voiceChannel.join()
               .then(connection => { // Connection is an instance of VoiceConnection
-                console.log('looking in the directory : ' + __dirname +'/../audio/mcbone.mp3');
-                const dispatcher = connection.playFile(__dirname +'/../audio/mcbone.mp3');
-                dispatcher.on('end', () => {
-                    message.member.voiceChannel.leave();
-                  });
+                d.startMP3Dispatcher(message, connection, __dirname +'/../audio/mcbone.mp3');
+                d.dispatcher.on("end", end => {
+                  message.member.voiceChannel.leave();
+                  // d.dispatcher = null;
+              });
               })
               .catch(console.log);
           } else {

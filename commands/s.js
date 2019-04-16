@@ -8,7 +8,7 @@ module.exports = {
     usage: '!s',
 	execute(message, args) {
     //console.log(d.getDispatcher());
-    d.endDispatcher();
+    d.endDispatcher(message);
     //message.member.voiceChannel.leave();
 	},
 };

@@ -17,15 +17,13 @@ module.exports = {
                     console.log("joined channel");
                     const stream = ytdl(args[0], { filter : 'audioonly' });
                     try{
-                      //dispatcher = connection.playStream(stream, streamOptions);
-                      d.startDispatcher(connection, stream, streamOptions);
-                      //d.setDispatcher(dispatcher);
-                     // dispatcher.pause();
+                      d.startYTDispatcher(message, connection, stream, streamOptions);
                     }catch(error) {
-                     // console.log(error);
+                      console.log(error);
                     }
-                    dispatcher.on("end", end => {
+                    d.dispatcher.on("end", end => {
                         console.log("left channel");
+                        d.dispatcher = null;
                         voiceChannel.leave();
                     });
               })

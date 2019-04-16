@@ -1,14 +1,14 @@
 const d = require('../functions/dispatcher');
 
 module.exports = {
-	name: 'leet',
-  description: 'WHY AM I SO LEET',
-  cooldown: 5,
+	name: 'cougar',
+    description: 'Did her with a caramel magnum',
+    cooldown: 5,
 	execute(message, args) {
         if (message.member.voiceChannel) {
             message.member.voiceChannel.join()
               .then(connection => { // Connection is an instance of VoiceConnection
-                d.startMP3Dispatcher(message, connection, __dirname +'/../audio/leet.mp3');
+                d.startMP3Dispatcher(message, connection, __dirname +'/../audio/cougar.mp3');
                 d.dispatcher.on("end", end => {
                   message.member.voiceChannel.leave();
                   d.dispatcher = null;
